@@ -126,11 +126,6 @@ data_analyst_project/
 
 ---
 
-## 🎥 Project Walkthrough
-
-(👉 Add your video link here)
-
----
 
 ## 📌 Conclusion
 
