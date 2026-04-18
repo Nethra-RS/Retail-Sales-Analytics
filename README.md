@@ -1,133 +1,227 @@
 # 📊 Retail Sales Analytics & Forecasting Project
 
 ## 🚀 Overview
-This project analyzes a global retail dataset to uncover key business insights and forecast future sales. It demonstrates a complete data pipeline from raw data ingestion to business intelligence visualization.
 
-The goal is to answer critical business questions such as:
-- Who are the top revenue-generating customers?
-- Which regions and categories perform best?
-- What trends exist in sales over time?
-- What can we expect in the near future?
+This project analyzes a global retail dataset to uncover business insights and forecast short-term sales. It demonstrates an end-to-end data pipeline — from raw data ingestion to transformation, analysis, and visualization.
+
+The objective is to answer key business questions:
+
+* Who are the top revenue-generating customers?
+* Which segments and regions perform best?
+* What trends exist in sales over time?
+* What can we expect in the near future?
+
+## 📁 Dataset
+
+This project uses the **Sales Forecasting Dataset** from Kaggle:
+
+🔗 https://www.kaggle.com/datasets/rohitsahoo/sales-forecasting/data
+
+### 📌 Dataset Description
+
+* Global retail (superstore-style) dataset
+* Contains ~9,800 transaction-level records
+* Covers multiple years of sales data
+* Includes:
+
+  * Order details (Order ID, Order Date, Ship Date)
+  * Customer information (Customer ID, Name, Segment)
+  * Location data (Country, City, State, Region)
+  * Product details (Category, Sub-Category, Product Name)
+  * Sales values
+
 
 ---
 
 ## 🧱 Data Pipeline
 
-Raw CSV → SQL Database → Data Transformation → Python Analysis → Tableau Dashboard
+**Raw CSV → SQL Database → Data Cleaning → Python EDA → Forecasting → Tableau Dashboard**
 
 ### 🔹 Steps:
-1. **Data Ingestion**
-   - Loaded raw CSV data into SQLite database
 
-2. **Data Cleaning & Transformation**
-   - Converted date fields into proper format
-   - Removed inconsistencies and ensured data quality
-   - Created a cleaned table (`orders_clean`)
+### 1. Data Ingestion
 
-3. **SQL Analysis**
-   - Aggregated sales by customer, region, segment, and category
-   - Built queries for business insights
+* Loaded raw CSV (`train.csv`) into a SQLite database
+* Created a base table: `orders`
 
-4. **Python Analysis**
-   - Performed exploratory data analysis (EDA)
-   - Generated trends and distributions
-   - Built a simple forecasting model (7-day moving average)
+---
 
-5. **Dashboard (Tableau)**
-   - Designed interactive dashboards for business users
-   - Added KPIs, filters, and insights
+### 2. Data Cleaning & Transformation (SQL)
+
+* Converted date fields into proper format
+* Selected relevant columns
+* Removed null values
+* Standardized column names
+* Created cleaned table: `orders_clean`
+
+---
+
+### 3. Data Validation (Python)
+
+* Checked duplicate records in raw dataset
+* Verified cleaned dataset contains **zero duplicates**
+* Performed missing value checks
+
+---
+
+### 4. Exploratory Data Analysis (EDA)
+
+Performed using Python (Pandas) and SQL:
+
+* Sales distribution analysis
+* Revenue by:
+
+  * Customer
+  * Segment
+  * Region
+  * Category
+* Time series analysis (daily & monthly trends)
+* Product performance (top & low products)
+* Customer segmentation (Low / Medium / High spenders)
+
+---
+
+### 5. Forecasting
+
+* Implemented **7-day moving average model**
+* Predicted short-term daily sales
+* Provides baseline estimate based on recent trends
+
+---
+
+### 6. Dashboard (Tableau)
+
+* Interactive dashboards for business insights
+* KPI cards and visual analytics
+* Filter-controlled exploration
 
 ---
 
 ## 📊 Key Metrics
 
-- **Total Sales:** ~$2.24M  
-- **Total Orders:** 4,859  
-- **Average Order Value:** ~$461  
-- **Forecast (Next Period):** ~$2.17K  
+* **Total Sales:** ~$2.24M
+* **Total Orders:** ~4,800+
+* **Average Order Value:** ~$460
+* **Forecast (Next Period):** ~$2.17K/day
 
 ---
 
 ## 🔍 Key Insights
 
 ### 📌 Business Performance
-- Revenue is highly concentrated among top customers, with the highest contributor generating over $25K  
-- The Consumer segment leads with ~$1.14M, contributing more than 50% of total revenue  
-- The West region is the top performer (~$710K), while the South underperforms (~$389K)  
-- Technology is the leading category (~$827K), contributing ~36.6% of total sales  
 
-### 📌 Trends & Patterns
-- Sales are highly skewed, with most transactions under $500 and a few high-value orders driving revenue  
-- Strong seasonality observed, with peaks in November (~$117K) and December (~$83K)  
-- Significant gap between top products (~$61K) and low-performing products (<$10)  
+* Revenue is highly concentrated among top customers, with the highest contributing over **$25K**
+* Consumer segment contributes **~50%+ of total revenue**
+* West region leads with **~$710K**, while South underperforms (~$389K)
+* Technology category dominates with **~36% contribution (~$827K)**
 
 ---
 
-## 📈 Forecasting
+### 📌 Trends & Patterns
 
-A simple **7-day moving average model** was used to estimate short-term sales:
+* Sales show strong **seasonality**, peaking in:
 
-- Forecasted daily sales: ~$2.17K  
-- Indicates stable short-term performance based on recent trends  
+  * November (~$117K)
+  * December (~$83K)
+* Most orders are **low-value (<$500)**, with a few high-value transactions driving revenue
+* Significant gap between:
 
-> Note: This is a baseline model and can be extended using advanced time series techniques.
+  * Top products (~$61K)
+  * Low-performing products (<$10)
+
+---
+
+### 📌 Customer Insights
+
+* High-value customers contribute disproportionately to revenue
+* Customer segmentation highlights importance of retention strategies
+* Opportunity to improve engagement of low-value customers
+
+---
+
+## 📈 Forecasting Insight
+
+* 7-day moving average predicts **~$2.17K daily sales**
+* Indicates stable short-term performance
+* Can be extended using advanced time series models
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **SQL (SQLite)** – Data storage & transformation  
-- **Python (Pandas)** – Data analysis  
-- **Tableau** – Data visualization & dashboarding  
+* **SQL (SQLite)** → Data storage & transformation
+* **Python (Pandas)** → Data analysis & EDA
+* **Tableau** → Dashboard & visualization
 
 ---
 
 ## 📊 Dashboard Features
 
-- Interactive filters (Date, Region)  
-- KPI cards (Sales, Orders, AOV, Forecast)  
-- Sales trend with forecast  
-- Segment, category, and region performance  
-- Customer and product insights  
-- Sales distribution analysis  
+* KPI summary (Sales, Orders, AOV, Forecast)
+* Sales trend with forecast
+* Sales distribution (histogram)
+* Category, region, and segment analysis
+* Customer and product insights
+* Interactive filters (Date, Region)
+## 📊 Dashboard Preview
+
+### 🔹 Sales Overview Dashboard
+
+![Sales Dashboard](Tableau_dashboard/Dashboard1.png)
+
+### 🔹 Customer & Product Insights
+
+![Customer Dashboard](Tableau_dashboard/Dashboard2.png)
 
 ---
 
 ## 📂 Project Structure
 
+```
 data_analyst_project/
 │
 ├── data/
-│ └── train.csv
+│   └── train.csv
+├── output/
+│   └── export_data.py
+│   └── clean_data.csv
 │
 ├── sql/
-│ ├── database_setup.py
-│ └── transformation.sql
+│   ├──  database_setup.py
+│   ├── sales.db
+│   ├── transformation.sql
+│   ├── analysis.py
+│   ├── forecast.csv
+│   ├── run_sql.py
+├── Tableau_dashboard/
+│   └── Dashboard1
+│   └── Dashboard2
 │
-├── notebooks/
-│ └── analysis.py
-│
-├── app/
-│ └── (optional dashboard or app files)
-│
-├── forecast.csv
 └── README.md
-
+```
 
 ---
 
 ## 💡 Business Recommendations
 
-- Focus on retaining high-value customers driving revenue  
-- Invest in high-performing regions like the West  
-- Improve performance in underperforming regions (South)  
-- Optimize product portfolio by addressing low-performing items  
-- Leverage seasonal trends for inventory and marketing strategies  
+* Focus on retaining high-value customers
+* Invest more in top-performing regions (West)
+* Improve performance in underperforming regions (South)
+* Optimize product portfolio (reduce low-performing products)
+* Leverage seasonal trends for marketing & inventory planning
 
 ---
 
-
 ## 📌 Conclusion
 
-This project demonstrates end-to-end data analysis capabilities, combining SQL, Python, and Tableau to deliver actionable business insights and forecasting.
+This project demonstrates a complete data workflow:
 
+* Data cleaning & validation
+* Exploratory analysis
+* Business insight generation
+* Forecasting
+* Interactive dashboarding
+
+It highlights how data can be used to drive decision-making and business strategy.
+
+---
